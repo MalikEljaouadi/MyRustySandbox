@@ -1,0 +1,20 @@
+# see https://helm.sh/docs/topics/charts/#the-chartyaml-file
+apiVersion: v2
+name: MyRustySandbox-ms
+description: A Helm chart for the ms service of MyRustySandbox
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.1.0
+
+home: https://github.com/uberforcede/MyRustySandbox
+
+sources:
+  - https://github.com/uberforcede/MyRustySandbox/tree/master/devops/chart-ms
+
+dependencies:
+  - name: wefox-ai-ms
+    version: "~0.11"
+    repository: https://registry.wefox.io/repository/helm-hosted/

@@ -1,0 +1,20 @@
+# Can not create a single ConfigMap else "Too long: must have at most 262144 bytes"
+# is fixed with recent version of kubectl and ArgoCD 2.5+
+# see [Fixing Argo CD “Too long must have at most 262144 bytes” error](https://www.arthurkoziel.com/fixing-argocd-crd-too-long-error/)
+#
+# TODO make the import of alerts configurable or related of some datasources definition
+{{- $files := .Files.Glob "grafana-alerts/*.{yaml,json}" }}
+{{- if $files }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ $.Release.Name }}-grafana-alerts"
+  labels:
+    grafana_alert: "1"
+data:
+{{- range $path, $fileContents := $files }}
+  {{ $.Release.Name }}-{{ base $path }}: |-
+    {{ $.Files.Get $path | nindent 4 }}
+{{- end }}
+{{- end }}

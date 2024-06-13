@@ -1,0 +1,13 @@
+global:
+  env: dev
+
+wefox-ai-ms:
+  podDisruptionBudget:
+    enabled: false
+  emissary:
+    mapping:
+      bypass_auth: "true"
+  scaledObject:
+    triggersWithName:
+      workingHoursOnly:
+        enabled: false

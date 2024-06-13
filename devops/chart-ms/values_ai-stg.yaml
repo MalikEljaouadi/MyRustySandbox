@@ -1,0 +1,8 @@
+global:
+  env: stg
+
+wefox-ai-ms:
+  scaledObject:
+    triggersWithName:
+      workingHoursOnly:
+        enabled: false
