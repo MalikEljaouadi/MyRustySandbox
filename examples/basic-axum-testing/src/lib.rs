@@ -8,23 +8,11 @@ use std::convert::Infallible;
 
 use axum::routing::get;
 use axum::Router;
-use once_cell::sync::Lazy;
-use wai_axum_extra::prelude::init_tracing;
-use wai_axum_extra_test::TestApp;
-use wai_axum_extra_test::DummyState;
-
-// To avoid multiple tracing initialization
-static INIT_TRACING: Lazy<()> = Lazy::new(|| {
-    if let Err(err) = init_tracing() {
-        eprintln!("Fail to initialize tracing because: {err:?}");
-    }
-});
-
+use axum_testing::{DummyState, TestApp};
 // To avoid create your state and router on each tests.
 // You can create multiple function if you need to have multiple application configurations
 // e.g. start and initialize a DB
 async fn build_test_app() -> TestApp {
-    Lazy::force(&INIT_TRACING);
     let state = DummyState::default();
     let router = Router::new()
         .route("/", get(|| async move { axum::Json("🏡 Home") }));

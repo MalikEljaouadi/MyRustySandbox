@@ -7,7 +7,6 @@ use tokio::sync::oneshot;
 use tokio::task::JoinHandle;
 use tracing::info;
 
-use wai_axum_extra::prelude::*;
 
 use crate::{HttpClientForTest, MetricsValues};
 
