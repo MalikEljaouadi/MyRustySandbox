@@ -21,3 +21,9 @@ curl 'http://localhost:8080/health'
 ```sh
 cargo test
 ```
+
+## TODO
+
+- [ ] Work on the dependancies.
+- [ ] Work on the axum-testing.
+- [ ] Work on the CI.
