@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["examples/basic-*"]
+members = [ "axum-dependencies","examples/basic-*"]
 
 [workspace.package]
 version = "0.1.0"
